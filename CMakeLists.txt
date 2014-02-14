@@ -46,6 +46,11 @@ if (COMMAND set_up_hermetic_build)
   set_up_hermetic_build()
 endif()
 
+# Work around for visual studio 11
+if (MSVC11)
+  add_definitions(-D_VARIADIC_MAX=10)
+endif (MSVC11)
+
 # Define helper functions and macros used by Google Test.
 include(cmake/internal_utils.cmake)
 
